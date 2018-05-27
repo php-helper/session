@@ -65,10 +65,14 @@ class Session
     public function append($key, $value): void
     {
         if (!$this->isDefined($key)) {
-            $this->set($key, $value);
+            $this->set($key, [$value]);
         } else {
             $values = $this->get($key);
-            $values[] = $value;
+            if (is_array($values)) {
+                $values[] = $value;
+            } else {
+                $values = [$values, $value];
+            }
             $this->set($key, $values);
         }
     }
