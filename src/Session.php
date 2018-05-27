@@ -42,6 +42,14 @@ class Session
     }
 
     /**
+     * @param string|int $key
+     */
+    public function delete($key): void
+    {
+        unset($_SESSION[$key]);
+    }
+
+    /**
      * @param $key
      * @return bool
      */
@@ -78,14 +86,24 @@ class Session
         $this->append(self::MESSAGES_CONTAINER . '.' . $messageType, $message);
     }
 
+    /**
+     * @param string $messageType
+     */
+    private function deleteFlashMessages(string $messageType): void
+    {
+        $this->delete(self::MESSAGES_CONTAINER . '.' . $messageType);
+    }
+
     public function setFlashMessage(string $message): void
     {
         $this->setFlash(SessionEnum::MESSAGE, $message);
+        $this->deleteFlashMessages(SessionEnum::MESSAGE);
     }
 
     public function setFlashError(string $message): void
     {
         $this->setFlash(SessionEnum::ERROR, $message);
+        $this->deleteFlashMessages(SessionEnum::ERROR);
     }
 
     /**
