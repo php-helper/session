@@ -68,11 +68,7 @@ class Session
             $this->set($key, $value);
         } else {
             $values = $this->get($key);
-            if (is_array($values)) {
-                $values[] = $value;
-            } else {
-                $values = [$values, $value];
-            }
+            $values[] = $value;
             $this->set($key, $values);
         }
     }
