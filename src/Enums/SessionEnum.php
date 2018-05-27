@@ -6,7 +6,7 @@
  * Time: 10:40
  */
 
-namespace PhpExt\Session\Enums;
+namespace PhpHelper\Session\Enums;
 
 use MyCLabs\Enum\Enum;
 

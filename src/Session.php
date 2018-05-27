@@ -6,9 +6,9 @@
  * Time: 10:29
  */
 
-namespace PhpExt\Session;
+namespace PhpHelper\Session;
 
-use PhpExt\Session\Enums\SessionEnum;
+use PhpHelper\Session\Enums\SessionEnum;
 
 class Session
 {
