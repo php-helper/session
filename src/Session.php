@@ -97,13 +97,11 @@ class Session
     public function setFlashMessage(string $message): void
     {
         $this->setFlash(SessionEnum::MESSAGE, $message);
-        $this->deleteFlashMessages(SessionEnum::MESSAGE);
     }
 
     public function setFlashError(string $message): void
     {
         $this->setFlash(SessionEnum::ERROR, $message);
-        $this->deleteFlashMessages(SessionEnum::ERROR);
     }
 
     /**
@@ -119,7 +117,9 @@ class Session
      */
     public function getFlashMessages()
     {
-        return $this->get(self::MESSAGES_CONTAINER . '.' . SessionEnum::MESSAGE);
+        $messages = $this->get(self::MESSAGES_CONTAINER . '.' . SessionEnum::MESSAGE);
+        $this->deleteFlashMessages(SessionEnum::MESSAGE);
+        return $messages;
     }
 
     /**
@@ -127,6 +127,8 @@ class Session
      */
     public function getFlashErrors()
     {
-        return $this->get(self::MESSAGES_CONTAINER . '.' . SessionEnum::ERROR);
+        $messages = $this->get(self::MESSAGES_CONTAINER . '.' . SessionEnum::ERROR);
+        $this->deleteFlashMessages(SessionEnum::ERROR);
+        return $messages;
     }
 }
