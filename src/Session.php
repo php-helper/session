@@ -41,10 +41,11 @@ class Session
      */
     public function get($key, $defaultValue = '')
     {
-        if($this->has($key))
+        if($this->has($key)) {
             return $_SESSION[$key];
-        else
+	    } else {
             return $defaultValue;
+        }
     }
 
     /**
@@ -52,7 +53,9 @@ class Session
      */
     public function delete($key): void
     {
-        unset($_SESSION[$key]);
+        if ($this->has($key)) {
+		    unset($_SESSION[$key]);
+	    }
     }
 
     /**
