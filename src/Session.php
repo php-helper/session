@@ -54,8 +54,8 @@ class Session
     public function delete($key): void
     {
         if ($this->has($key)) {
-		    unset($_SESSION[$key]);
-	    }
+            unset($_SESSION[$key]);
+        }
     }
 
     /**
