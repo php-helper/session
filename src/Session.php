@@ -103,6 +103,27 @@ class Session
         $this->setFlashMessageByType(FlashMessageEnum::WARNING, $message);
     }
 
+    public function setFlashMessages(array $messages): void
+    {
+        foreach ($messages as $message) {
+            $this->setFlashMessageByType(FlashMessageEnum::MESSAGE, $message);
+        }
+    }
+
+    public function setFlashErrors(array $messages): void
+    {
+        foreach ($messages as $message) {
+            $this->setFlashMessageByType(FlashMessageEnum::ERROR, $message);
+        }
+    }
+
+    public function setFlashWarnings(array $messages): void
+    {
+        foreach ($messages as $message) {
+            $this->setFlashMessageByType(FlashMessageEnum::WARNING, $message);
+        }
+    }
+
     /**
      * @param string $messageType
      * @param string $message
